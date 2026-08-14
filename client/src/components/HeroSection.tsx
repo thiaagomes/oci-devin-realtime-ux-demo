@@ -19,10 +19,22 @@ export function HeroSection({ onExploreInsights, onOpenCustomize }: HeroSectionP
       <div className="hero__glow" aria-hidden="true" />
 
       <div className="hero__content">
-        <span className="badge badge--info hero__pill" data-demo-id="hero-pill">
-          <Icon name="bolt" size={12} />
-          Q4 momentum report is ready
-        </span>
+        <div className="hero__header" data-demo-id="hero-header">
+          <span className="badge badge--info hero__pill" data-demo-id="hero-pill">
+            <Icon name="bolt" size={12} />
+            Q4 momentum report is ready
+          </span>
+
+          <button
+            type="button"
+            className="btn btn--primary hero__cta"
+            data-demo-id="explore-insights-button"
+            onClick={onExploreInsights}
+          >
+            <Icon name="chart" size={16} />
+            Explore Insights
+          </button>
+        </div>
 
         <h1 id="hero-title" className="hero__title" data-demo-id="hero-title">
           Welcome back, Thiago.
@@ -35,15 +47,6 @@ export function HeroSection({ onExploreInsights, onOpenCustomize }: HeroSectionP
         </p>
 
         <div className="hero__actions" data-demo-id="hero-actions">
-          <button
-            type="button"
-            className="btn btn--primary hero__cta"
-            data-demo-id="explore-insights-button"
-            onClick={onExploreInsights}
-          >
-            <Icon name="chart" size={16} />
-            Explore Insights
-          </button>
           <button
             type="button"
             className="btn btn--ghost"

@@ -1,0 +1,109 @@
+.activity__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.activity__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.activity__item:hover {
+  background: var(--color-surface-2);
+}
+
+.activity__avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--color-text);
+}
+
+.activity__avatar--accent {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.activity__avatar--success {
+  background: rgba(52, 211, 153, 0.16);
+  color: var(--color-success);
+}
+
+.activity__avatar--info {
+  background: rgba(96, 165, 250, 0.16);
+  color: var(--color-info);
+}
+
+.activity__avatar--warning {
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--color-warning);
+}
+
+.activity__body {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.activity__text {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.activity__text strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.activity__text em {
+  color: var(--color-accent);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.activity__time {
+  color: var(--color-text-subtle);
+  font-size: var(--text-xs);
+}
+
+.activity__action {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.activity__item:hover .activity__action,
+.activity__action:focus-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.activity__pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background: var(--color-success);
+  animation: activity-pulse 1.8s var(--ease-out) infinite;
+}
+
+@keyframes activity-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(52, 211, 153, 0);
+  }
+}

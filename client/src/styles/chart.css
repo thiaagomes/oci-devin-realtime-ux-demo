@@ -1,0 +1,109 @@
+.chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.chart__legend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.chart__swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+}
+
+.chart__swatch--primary {
+  background: var(--color-accent);
+}
+
+.chart__swatch--secondary {
+  background: var(--color-accent-2);
+}
+
+.chart__svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.chart__grid {
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.chart__axis-label {
+  fill: var(--color-text-subtle);
+  font-size: 10px;
+  font-family: var(--font-sans);
+}
+
+.chart__line {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart__line--primary {
+  stroke: var(--color-accent);
+  filter: drop-shadow(0 6px 14px rgba(99, 102, 241, 0.45));
+}
+
+.chart__line--secondary {
+  stroke: var(--color-accent-2);
+  stroke-dasharray: 6 6;
+  opacity: 0.85;
+}
+
+.chart__dot {
+  fill: var(--color-bg);
+  stroke: var(--color-accent);
+  stroke-width: 2;
+  transition: r var(--duration-fast) var(--ease-out);
+}
+
+.chart__dot--active {
+  fill: var(--color-accent);
+}
+
+.chart__hit {
+  fill: transparent;
+  cursor: crosshair;
+}
+
+.chart__tooltip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 34px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.chart__tooltip--visible {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+}
+
+.chart__tooltip b {
+  font-variant-numeric: tabular-nums;
+}

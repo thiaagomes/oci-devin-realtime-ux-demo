@@ -111,6 +111,48 @@ export const revenueSeries: ChartPoint[] = [
   { label: 'Dec', primary: 552, secondary: 344 },
 ];
 
+export interface RevenueRange {
+  id: string;
+  label: string;
+  caption: string;
+  granularity: string;
+  series: ChartPoint[];
+}
+
+export const revenueRanges: RevenueRange[] = [
+  {
+    id: '30d',
+    label: '30D',
+    caption: 'Normalized in thousands of USD, grouped by week.',
+    granularity: 'week',
+    series: [
+      { label: 'W1', primary: 118, secondary: 74 },
+      { label: 'W2', primary: 132, secondary: 81 },
+      { label: 'W3', primary: 126, secondary: 92 },
+      { label: 'W4', primary: 149, secondary: 97 },
+      { label: 'W5', primary: 161, secondary: 108 },
+    ],
+  },
+  {
+    id: '90d',
+    label: '90D',
+    caption: 'Normalized in thousands of USD, grouped by month.',
+    granularity: 'month',
+    series: [
+      { label: 'Oct', primary: 468, secondary: 302 },
+      { label: 'Nov', primary: 505, secondary: 318 },
+      { label: 'Dec', primary: 552, secondary: 344 },
+    ],
+  },
+  {
+    id: '12m',
+    label: '12M',
+    caption: 'Normalized in thousands of USD, grouped by month.',
+    granularity: 'month',
+    series: revenueSeries,
+  },
+];
+
 export interface ChannelSlice {
   id: string;
   label: string;

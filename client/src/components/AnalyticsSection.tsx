@@ -1,10 +1,8 @@
 import { AreaChart } from './AreaChart';
 import { ChannelMix } from './ChannelMix';
 import { Icon } from './Icon';
-import { revenueSeries } from '../data/dashboard';
+import { revenueRanges } from '../data/dashboard';
 import '../styles/analytics.css';
-
-const ranges = ['30D', '90D', '12M'];
 
 export interface AnalyticsSectionProps {
   activeRange: string;
@@ -12,6 +10,8 @@ export interface AnalyticsSectionProps {
 }
 
 export function AnalyticsSection({ activeRange, onRangeChange }: AnalyticsSectionProps) {
+  const range = revenueRanges.find((item) => item.label === activeRange) ?? revenueRanges[revenueRanges.length - 1];
+
   return (
     <section className="analytics" data-demo-id="analytics-section" aria-label="Analytics">
       <article className="card analytics__main" data-demo-id="analytics-chart-card">
@@ -19,18 +19,18 @@ export function AnalyticsSection({ activeRange, onRangeChange }: AnalyticsSectio
           <div>
             <p className="eyebrow">Revenue analytics</p>
             <h3 className="card__title">Recurring revenue vs. expansion</h3>
-            <p className="card__subtitle">Normalized in thousands of USD, refreshed every 5 minutes.</p>
+            <p className="card__subtitle">{range.caption}</p>
           </div>
           <div className="analytics__toolbar" data-demo-id="analytics-range-switch">
-            {ranges.map((range) => (
+            {revenueRanges.map((item) => (
               <button
-                key={range}
+                key={item.id}
                 type="button"
-                className={`analytics__range${range === activeRange ? ' analytics__range--active' : ''}`}
-                data-demo-id={`analytics-range-${range.toLowerCase()}`}
-                onClick={() => onRangeChange(range)}
+                className={`analytics__range${item.label === activeRange ? ' analytics__range--active' : ''}`}
+                data-demo-id={`analytics-range-${item.id}`}
+                onClick={() => onRangeChange(item.label)}
               >
-                {range}
+                {item.label}
               </button>
             ))}
             <button type="button" className="icon-button" aria-label="Export analytics">
@@ -39,7 +39,12 @@ export function AnalyticsSection({ activeRange, onRangeChange }: AnalyticsSectio
           </div>
         </div>
         <div className="card__body">
-          <AreaChart data={revenueSeries} primaryLabel="Recurring" secondaryLabel="Expansion" />
+          <AreaChart
+            data={range.series}
+            primaryLabel="Recurring"
+            secondaryLabel="Expansion"
+            granularity={range.granularity}
+          />
         </div>
       </article>
 

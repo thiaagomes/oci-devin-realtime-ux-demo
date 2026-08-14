@@ -6,13 +6,14 @@ export interface AreaChartProps {
   data: ChartPoint[];
   primaryLabel: string;
   secondaryLabel: string;
+  granularity?: string;
 }
 
 const WIDTH = 720;
 const HEIGHT = 260;
 const PADDING = { top: 16, right: 8, bottom: 28, left: 40 };
 
-export function AreaChart({ data, primaryLabel, secondaryLabel }: AreaChartProps) {
+export function AreaChart({ data, primaryLabel, secondaryLabel, granularity = 'month' }: AreaChartProps) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   const geometry = useMemo(() => {
@@ -46,6 +47,7 @@ export function AreaChart({ data, primaryLabel, secondaryLabel }: AreaChartProps
   }, [data]);
 
   const active = hovered === null ? null : data[hovered];
+  const hitWidth = (WIDTH - PADDING.left - PADDING.right) / data.length;
 
   return (
     <div className="chart" data-demo-id="revenue-chart">
@@ -64,7 +66,7 @@ export function AreaChart({ data, primaryLabel, secondaryLabel }: AreaChartProps
         className="chart__svg"
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         role="img"
-        aria-label={`${primaryLabel} compared with ${secondaryLabel} over the last twelve months`}
+        aria-label={`${primaryLabel} compared with ${secondaryLabel} by ${granularity}`}
         onMouseLeave={() => setHovered(null)}
       >
         <defs>
@@ -111,9 +113,9 @@ export function AreaChart({ data, primaryLabel, secondaryLabel }: AreaChartProps
             />
             <rect
               className="chart__hit"
-              x={geometry.toX(index) - 14}
+              x={geometry.toX(index) - hitWidth / 2}
               y={PADDING.top}
-              width={28}
+              width={hitWidth}
               height={HEIGHT - PADDING.top - PADDING.bottom}
               onMouseEnter={() => setHovered(index)}
             />
@@ -133,7 +135,7 @@ export function AreaChart({ data, primaryLabel, secondaryLabel }: AreaChartProps
             </span>
           </>
         ) : (
-          <span>Hover the chart to inspect a month</span>
+          <span>Hover the chart to inspect a {granularity}</span>
         )}
       </div>
     </div>

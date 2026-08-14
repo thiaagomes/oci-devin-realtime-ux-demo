@@ -1,0 +1,93 @@
+/*
+ * Centralized design tokens.
+ * Future customization sessions should change values here first:
+ * accent colors, radii, spacing scale, shadows, typography.
+ */
+:root {
+  /* Brand / accent */
+  --color-accent: #6366f1;
+  --color-accent-strong: #4f46e5;
+  --color-accent-soft: rgba(99, 102, 241, 0.14);
+  --color-accent-contrast: #ffffff;
+  --color-accent-2: #22d3ee;
+  --gradient-accent: linear-gradient(135deg, #6366f1 0%, #8b5cf6 45%, #22d3ee 100%);
+  --gradient-hero: radial-gradient(120% 140% at 0% 0%, rgba(99, 102, 241, 0.35) 0%, rgba(15, 18, 32, 0) 55%),
+    radial-gradient(120% 160% at 100% 0%, rgba(34, 211, 238, 0.22) 0%, rgba(15, 18, 32, 0) 60%);
+
+  /* Surfaces */
+  --color-bg: #0b0e18;
+  --color-bg-elevated: #11142161;
+  --color-surface: rgba(21, 25, 41, 0.86);
+  --color-surface-2: rgba(30, 35, 56, 0.72);
+  --color-surface-hover: rgba(43, 50, 78, 0.72);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Text */
+  --color-text: #f4f6fb;
+  --color-text-muted: #a5adc4;
+  --color-text-subtle: #737d99;
+
+  /* Semantic */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-info: #60a5fa;
+
+  /* Typography */
+  --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.375rem;
+  --leading-tight: 1.15;
+  --leading-normal: 1.55;
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
+  --radius-pill: 999px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(4, 6, 14, 0.4);
+  --shadow-md: 0 12px 28px -12px rgba(4, 6, 14, 0.7);
+  --shadow-lg: 0 34px 70px -28px rgba(4, 6, 14, 0.85);
+  --shadow-accent: 0 18px 38px -14px rgba(99, 102, 241, 0.6);
+
+  /* Layout */
+  --sidebar-width: 264px;
+  --topbar-height: 68px;
+  --content-max-width: 1440px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --duration-slow: 420ms;
+
+  /* Z layers */
+  --z-drawer: 60;
+  --z-overlay: 50;
+  --z-fab: 40;
+  --z-topbar: 30;
+}

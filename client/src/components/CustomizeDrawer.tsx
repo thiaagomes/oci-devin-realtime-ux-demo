@@ -136,14 +136,27 @@ export function CustomizeDrawer({ open, onClose }: CustomizeDrawerProps) {
 
           {response ? (
             <div
-              className={`drawer__notice drawer__notice--${state === 'error' ? 'error' : 'warning'}`}
+              className={`drawer__notice drawer__notice--${
+                response.accepted ? 'success' : state === 'error' ? 'error' : 'warning'
+              }`}
               data-demo-id="customize-response"
               role="status"
             >
-              <Icon name={state === 'error' ? 'close' : 'help'} size={16} />
+              <Icon name={response.accepted ? 'check' : state === 'error' ? 'close' : 'help'} size={16} />
               <div>
-                <strong>{state === 'error' ? 'Request failed' : 'AI integration not configured yet'}</strong>
+                <strong>
+                  {response.accepted
+                    ? 'Devin session created'
+                    : state === 'error'
+                      ? 'Request failed'
+                      : 'AI integration not configured yet'}
+                </strong>
                 <p>{response.message}</p>
+                {response.accepted && response.devinSessionUrl ? (
+                  <a href={response.devinSessionUrl} target="_blank" rel="noreferrer">
+                    Open Devin session
+                  </a>
+                ) : null}
               </div>
             </div>
           ) : null}

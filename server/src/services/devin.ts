@@ -33,13 +33,13 @@ export async function createDevinSession(authorization: string, prompt: string, 
   }
 
   const data = (await response.json()) as Partial<DevinSession>;
-  if (!data.session_id || !data.url || !data.title) {
+  if (!data.session_id || !data.url) {
     throw new Error('Devin API returned an incomplete session');
   }
   return {
     session_id: data.session_id,
     url: data.url,
     status: data.status ?? 'new',
-    title: data.title,
+    title: data.title ?? title,
   };
 }

@@ -25,7 +25,7 @@ export function HeroSection({ onExploreInsights, onOpenCustomize }: HeroSectionP
         </span>
 
         <h1 id="hero-title" className="hero__title" data-demo-id="hero-title">
-          Welcome back, Thiago.
+          Welcome to the live demo, Thiago.
           <span className="hero__title-accent">Your revenue engine is compounding.</span>
         </h1>
 

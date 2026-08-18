@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { config } from '../config';
+import { aiIntegrationConfigured, config } from '../config';
 
 export const metaRouter = Router();
 
@@ -10,7 +10,7 @@ metaRouter.get('/api/meta', (_req, res) => {
     build: config.gitSha,
     buildShort: config.gitSha ? config.gitSha.slice(0, 7) : null,
     environment: process.env.NODE_ENV ?? 'development',
-    aiIntegrationConfigured: false,
+    aiIntegrationConfigured,
     serverTime: new Date().toISOString(),
   });
 });

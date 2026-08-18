@@ -3,11 +3,15 @@ import { useCallback, useState } from 'react';
 export type StageStatus = 'pending' | 'active' | 'done' | 'blocked';
 
 export interface CustomizeResponse {
-  accepted: boolean;
+  accepted?: boolean;
   requestId?: string;
   message: string;
   aiIntegrationConfigured?: boolean;
   reachedStage?: string;
+  devinSessionId?: string;
+  devinSessionUrl?: string;
+  devinStatus?: string;
+  failedStage?: string;
 }
 
 export type RequestState = 'idle' | 'submitting' | 'answered' | 'error';
@@ -63,10 +67,11 @@ export function useCustomizeRequest() {
       const stageIndex = STAGE_ORDER.indexOf(stageId);
 
       if (stageIndex <= reachedIndex) return 'done';
+      if (response?.accepted) return 'pending';
       if (stageIndex === reachedIndex + 1) return 'blocked';
       return 'pending';
     },
-    [reachedStage, state],
+    [reachedStage, response, state],
   );
 
   return { state, response, submit, reset, stageStatus };

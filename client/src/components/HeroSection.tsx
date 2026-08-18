@@ -21,7 +21,7 @@ export function HeroSection({ onExploreInsights, onOpenCustomize }: HeroSectionP
       <div className="hero__content">
         <span className="badge badge--info hero__pill" data-demo-id="hero-pill">
           <Icon name="bolt" size={12} />
-          Q4 momentum report is ready
+          Live experience ready
         </span>
 
         <h1 id="hero-title" className="hero__title" data-demo-id="hero-title">
